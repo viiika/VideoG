@@ -27,9 +27,13 @@ python -m torch.distributed.launch --nproc_per_node=2 --master_port=2342 train.p
 
 In this method, the time, height, and width dimensions of the input data are merged, resulting in the construction of a graph where data from all time steps are included in the same graph. This approach considers both time and spatial dimensions, but they are processed within a single adjacency matrix. In other words, this method fuses the spatial information of the entire time sequence into one adjacency matrix.
 
+![Image description of Method 1](./image/M1.png)
+
 - Method 2: Separate Time Step Graph Construction
 
 In this method, the batch and time dimensions of the input data are merged, meaning that when constructing the graph, each time step has its own independent graph. This processing approach allows for handling data along the time dimension, where each time step has its own adjacency matrix. This method considers spatial information separately for each time step when dealing with data that has a time dimension (such as video).
+
+![Image description of Method 2](./image/M2.png)
 
 ## Performance
 
